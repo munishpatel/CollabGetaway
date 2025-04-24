@@ -21,11 +21,7 @@ export const YjsProvider = ({ children, roomName, userName }) => {
       const wsProvider = new WebsocketProvider(
         'ws://localhost:1234', 
         roomName,
-        doc,
-        { 
-          password: 'collab-getaway-room-password',
-          connect: true
-        }
+        doc
       );
 
       // Handle connection status changes
