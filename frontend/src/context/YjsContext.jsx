@@ -4,6 +4,13 @@ import { WebsocketProvider } from 'y-websocket';
 
 const YjsContext = createContext();
 
+// Detect environment
+const isProduction = import.meta.env.MODE === 'production';
+
+const websocketURL = isProduction
+  ? 'wss://collabgetaway.onrender.com'
+  : 'ws://localhost:1234';
+
 export const YjsProvider = ({ children, roomName, userName }) => {
   const [ydoc, setYdoc] = useState(null);
   const [provider, setProvider] = useState(null);
@@ -19,7 +26,7 @@ export const YjsProvider = ({ children, roomName, userName }) => {
       // Connect to your WebSocket server
       // Replace 'ws://localhost:1234' with your actual WebSocket server URL
       const wsProvider = new WebsocketProvider(
-        'ws://localhost:1234', 
+        websocketURL, 
         roomName,
         doc
       );
