@@ -60,7 +60,7 @@ export default function AIAssistant() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('${apiBaseURL}/api/ai-assistant', {
+      const response = await fetch(`${apiBaseURL}/api/ai-assistant`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
